@@ -1,0 +1,42 @@
+// Brute Force
+
+class Solution 
+{
+    public int maxProfit(int [] prices) 
+    {
+        int maxP = Integer.MIN_VALUE, sum=0;
+        for(int i=0;i<prices.length-1;i++)
+        {
+            for(int j=i+1;j<prices.length;j++)
+            {
+                if(prices[j] > prices[i])
+                {
+                    sum = prices[j] - prices[i];
+                }
+                maxP = Math.max(maxP,sum);
+            }
+        }
+        return maxP;
+    }
+}
+
+// Time complexity: O(n^2)
+// Space Complexity: O(1)
+
+// Optimal Solution
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int minV = Integer.MAX_VALUE;
+        int maxProfit = Integer.MIN_VALUE;
+        for(int i=0;i<prices.length;i++)
+        {
+            minV = Math.min(minV,prices[i]);
+            maxProfit = Math.max(maxProfit,(prices[i] - minV));
+        }
+        return maxProfit;
+    }
+}
+
+// Time complexity: O(n)
+// Space Complexity: O(1)
